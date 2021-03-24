@@ -18,7 +18,7 @@ void TIM2_IRQHandler() {
 int main() {
 
 	// Relocate the vector table to the flash memory location (moved to startup script)
-	//SCB->VTOR = 0x080E0000;
+	//SCB->VTOR = 0x08100000;
 
 	// Initialise timing LEDs on PC10 and PC11
 	RCC->AHB4ENR |= RCC_AHB4ENR_GPIOCEN;			// GPIO port clock
