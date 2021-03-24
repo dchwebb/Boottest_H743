@@ -15,6 +15,3 @@ assembly startup script then takes origin of vector table and updates SCB->VTOR 
   ldr r2, =g_pfnVectors			// Location of vector table in Flash (set by linker)
   str r2, [r3, #8]				// store vector table location to offset 8 of SCB which is VTOR
 ```
-
-=======
->>>>>>> a288b2f1b5932c1b0c8f30144ea8b3741e470950
