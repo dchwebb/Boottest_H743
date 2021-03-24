@@ -1,5 +1,6 @@
 # Boottest_H743
 Test running bootloader from different Flash address. Project tests basic blinky functionality in a loop and from a timer interrupt to establish that running from different flash region works.
+<<<<<<< HEAD
 
 Flash start location is set in linker script:
 
@@ -15,3 +16,5 @@ assembly startup script then takes origin of vector table and updates SCB->VTOR 
   str r2, [r3, #8]				// store vector table location to offset 8 of SCB which is VTOR
 ```
 
+=======
+>>>>>>> a288b2f1b5932c1b0c8f30144ea8b3741e470950
