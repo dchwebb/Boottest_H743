@@ -5,10 +5,10 @@ extern "C" {
 void TIM2_IRQHandler() {
 	TIM2->SR &= ~TIM_SR_UIF;				// clear UIF flag
 
-	if ((GPIOC->ODR & GPIO_ODR_OD11) == GPIO_ODR_OD11) {
-		GPIOC->ODR &= ~GPIO_ODR_OD11;
+	if ((GPIOB->ODR & GPIO_ODR_OD8) == GPIO_ODR_OD8) {
+		GPIOB->ODR &= ~GPIO_ODR_OD8;
 	} else {
-		GPIOC->ODR |= GPIO_ODR_OD11;
+		GPIOB->ODR |= GPIO_ODR_OD8;
 	}
 }
 
@@ -21,9 +21,9 @@ int main() {
 	//SCB->VTOR = 0x08100000;
 
 	// Initialise timing LEDs on PC10 and PC11
-	RCC->AHB4ENR |= RCC_AHB4ENR_GPIOCEN;			// GPIO port clock
-	GPIOC->MODER &= ~GPIO_MODER_MODE10_1;			// 00: Input, 01: General purpose output mode, 10: Alternate function mode, 11: Analog mode (reset state)
-	GPIOC->MODER &= ~GPIO_MODER_MODE11_1;			// 00: Input, 01: General purpose output mode, 10: Alternate function mode, 11: Analog mode (reset state)
+	RCC->AHB4ENR |= RCC_AHB4ENR_GPIOBEN;			// GPIO port clock
+	GPIOB->MODER &= ~GPIO_MODER_MODE7_1;			// PB7: debug pin
+	GPIOB->MODER &= ~GPIO_MODER_MODE8_1;			// PB8: debug pin
 
 	// Init Timer
 	RCC->APB1LENR |= RCC_APB1LENR_TIM2EN;
@@ -39,10 +39,10 @@ int main() {
 
 	while(1) {
 		for (int x = 0; x < 200000; ++x) {
-			GPIOC->ODR |= GPIO_ODR_OD10;
+			GPIOB->ODR |= GPIO_ODR_OD7;
 		}
 		for (int x = 0; x < 200000; ++x) {
-			GPIOC->ODR &= ~GPIO_ODR_OD10;
+			GPIOB->ODR &= ~GPIO_ODR_OD7;
 		}
 
 	}
